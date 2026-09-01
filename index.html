@@ -3,42 +3,113 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Consulta de Clima Acessível</title>
+  <title>Previsão do Tempo - Consulta em Tempo Real</title>
   <link rel="stylesheet" href="clima.css">
 </head>
 <body>
 
-  <!-- [A11Y] Região viva invisível para emitir avisos de voz ao leitor de tela -->
-  <div id="anuncio-a11y" class="sr-only" aria-live="polite" aria-atomic="true"></div>
-
   <main class="container">
-    <h1>🌤️ Consulta de Clima</h1>
+    <header class="header">
+      <h1>Previsão do Tempo 🌤️</h1>
+      <p>Confira o clima local ou busque por qualquer cidade</p>
+    </header>
 
-    <!-- Formulário de busca -->
-    <form id="form-busca" class="card-busca">
-      <div class="form-group">
-        <label for="input-cidade">Digite o nome da cidade:</label>
-        <div class="input-linha">
-          <input 
-            type="text" 
-            id="input-cidade" 
-            placeholder="Ex: Curitiba, São Paulo..." 
-            autocomplete="off"
-            required
-          >
-          <button type="submit" id="btn-buscar">Buscar Clima</button>
+    <!-- Card de Geolocalização (Clima Atual do Usuário) -->
+    <section id="geo-card" class="card geo-card">
+      <div class="card-header-geo">
+        <span class="geo-badge">📍 Sua Localização</span>
+        <button id="refresh-geo-btn" title="Atualizar localização">🔄</button>
+      </div>
+
+      <div id="geo-loading" class="state-message">Obtendo sua localização...</div>
+      <div id="geo-error" class="error-card hidden"></div>
+
+      <div id="geo-content" class="card-body hidden">
+        <div class="weather-primary">
+          <div>
+            <h2 id="geo-city">--</h2>
+            <span id="geo-description" class="weather-desc">--</span>
+          </div>
+          <img id="geo-icon" src="" alt="Ícone do Tempo" class="weather-icon">
+        </div>
+
+        <div class="temp-container">
+          <span id="geo-temp" class="temp-main">--°C</span>
+          <div class="temp-range">
+            <span>Sensação: <strong id="geo-feels">--°C</strong></span>
+          </div>
+        </div>
+
+        <div class="details-grid">
+          <div class="detail-item">
+            <span class="label">Mínima</span>
+            <span id="geo-temp-min">--°C</span>
+          </div>
+          <div class="detail-item">
+            <span class="label">Máxima</span>
+            <span id="geo-temp-max">--°C</span>
+          </div>
+          <div class="detail-item">
+            <span class="label">Umidade</span>
+            <span id="geo-humidity">--%</span>
+          </div>
+          <div class="detail-item">
+            <span class="label">Vento</span>
+            <span id="geo-wind">-- km/h</span>
+          </div>
         </div>
       </div>
-    </form>
+    </section>
 
-    <!-- [A11Y] Painel de resultados (inicia oculto via CSS) -->
-    <section 
-      id="card-clima" 
-      class="card-clima oculta" 
-      tabindex="-1" 
-      aria-label="Resultados da busca de clima"
-    >
-      <!-- Conteúdo inserido dinamicamente pelo JavaScript -->
+    <!-- Barra de Busca -->
+    <section class="search-box">
+      <input 
+        type="text" 
+        id="city-input" 
+        placeholder="Digite o nome de uma cidade..." 
+        autocomplete="off"
+      >
+      <button id="search-btn">Buscar</button>
+    </section>
+
+    <div id="search-loading" class="state-message hidden">Buscando clima da cidade...</div>
+    <div id="search-error" class="error-card hidden"></div>
+
+    <!-- Card de Resultado da Busca -->
+    <section id="search-card" class="card hidden">
+      <div class="weather-primary">
+        <div>
+          <h2 id="search-city">--</h2>
+          <span id="search-description" class="weather-desc">--</span>
+        </div>
+        <img id="search-icon" src="" alt="Ícone do Tempo" class="weather-icon">
+      </div>
+
+      <div class="temp-container">
+        <span id="search-temp" class="temp-main">--°C</span>
+        <div class="temp-range">
+          <span>Sensação: <strong id="search-feels">--°C</strong></span>
+        </div>
+      </div>
+
+      <div class="details-grid">
+        <div class="detail-item">
+          <span class="label">Mínima</span>
+          <span id="search-temp-min">--°C</span>
+        </div>
+        <div class="detail-item">
+          <span class="label">Máxima</span>
+          <span id="search-temp-max">--°C</span>
+        </div>
+        <div class="detail-item">
+          <span class="label">Umidade</span>
+          <span id="search-humidity">--%</span>
+        </div>
+        <div class="detail-item">
+          <span class="label">Vento</span>
+          <span id="search-wind">-- km/h</span>
+        </div>
+      </div>
     </section>
   </main>
 
