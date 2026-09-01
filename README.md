@@ -1,33 +1,37 @@
-# 🌤️ Previsão do Tempo — Consulta de Clima em Tempo Real
+# 🌤️ Previsão do Tempo — Consulta em Tempo Real
 
-Uma aplicação web moderna, responsiva e leve para consulta de condições meteorológicas em tempo real de qualquer cidade do mundo, desenvolvida com HTML, CSS e JavaScript (Vanilla JS).
+Uma aplicação web moderna, responsiva e leve para consulta de condições meteorológicas em tempo real por geolocalização automática ou busca por qualquer cidade do mundo, desenvolvida com HTML, CSS e JavaScript (Vanilla JS).
 
 ![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
 ![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
 ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
-![OpenWeather](https://img.shields.io/badge/API-OpenWeatherMap-orange?style=for-the-badge)
+![Open-Meteo](https://img.shields.io/badge/API-Open--Meteo-007ACC?style=for-the-badge)
 
 ---
 
 ## 🚀 Funcionalidades
 
-- **🔍 Busca por Cidade:** Pesquisa rápida do clima de qualquer localidade no mundo.
-- **📍 Geolocalização:** Detecção automática do clima da sua localização atual com um único clique.
+- **📍 Geolocalização Automática:** Identifica a localização atual do dispositivo ao abrir a página e exibe instantaneamente o clima local.
+- **🔄 Atualização Rápida:** Botão para recarregar a localização atual a qualquer momento.
+- **🔍 Busca por Cidade:** Pesquisa rápida das condições climáticas de qualquer município ou metrópole do mundo.
+- **⚡ Zero Configuração:** Funciona imediatamente após o download, sem necessidade de cadastro ou chaves de API (`API Keys`).
 - **🌡️ Dados Meteorológicos Completos:**
-  - Temperatura atual, sensação térmica, máxima e mínima.
-  - Umidade relativa do ar e velocidade do vento.
-  - Condição do tempo (ensolarado, nublado, chuva, etc.) com ícone ilustrativo.
-- **🌆 Destaques de Capitais:** Cards com acesso rápido às condições climáticas de grandes metrópoles.
-- **📱 Interface Responsiva:** Design otimizado para dispositivos móveis, tablets e computadores.
+  - Temperatura atual e sensação térmica.
+  - Temperatura máxima e mínima do dia.
+  - Umidade relativa do ar.
+  - Velocidade do vento (convertida para km/h).
+  - Status do tempo traduzido (baseado no código de interpretação WMO).
+- **📱 Design Responsivo & Dark Mode:** Layout moderno adaptado para dispositivos móveis, tablets e computadores.
 
 ---
 
 ## 🛠️ Tecnologias Utilizadas
 
-- **HTML5:** Estruturação semântica da página.
-- **CSS3:** Estilização moderna com Flexbox, CSS Grid, variáveis CSS e efeitos de *Glassmorphism*.
-- **JavaScript (ES6+):** Consumo de APIs assíncronas via `fetch`/`async-await`, manipulação da DOM e Geolocation API do navegador.
-- **[OpenWeatherMap API](https://openweathermap.org/api):** Serviço para obtenção de dados de clima em tempo real.
+- **HTML5:** Estruturação semântica.
+- **CSS3:** Estilização com Flexbox, CSS Grid, gradientes e variáveis CSS.
+- **JavaScript (ES6+):** Consumo assíncrono de APIs via `fetch`/`async-await`, manipulação da DOM e API de Geolocalização do navegador (`navigator.geolocation`).
+- **[Open-Meteo API](https://open-meteo.com/):** API pública gratuita de dados meteorológicos (sem chave de acesso).
+- **[Nominatim OpenStreetMap](https://nominatim.openstreetmap.org/):** Serviço de geocodificação reversa para converter coordenadas GPS em nomes de cidades.
 
 ---
 
@@ -35,7 +39,7 @@ Uma aplicação web moderna, responsiva e leve para consulta de condições mete
 
 ```text
 consulta-clima/
-├── index.html      # Estrutura e marcação da página
-├── clima.css       # Estilização visual e responsividade
-├── clima.js       # Lógica de integração com a API e manipulação de tela
+├── index.html      # Estrutura e elementos da página
+├── style.css       # Estilização visual e responsividade
+├── script.js       # Lógica de geolocalização, busca e requisições HTTP
 └── README.md       # Documentação do projeto
