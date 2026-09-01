@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Consulta de Clima Acessível</title>
+  <link rel="stylesheet" href="clima.css">
+</head>
+<body>
+
+  <!-- [A11Y] Região viva invisível para emitir avisos de voz ao leitor de tela -->
+  <div id="anuncio-a11y" class="sr-only" aria-live="polite" aria-atomic="true"></div>
+
+  <main class="container">
+    <h1>🌤️ Consulta de Clima</h1>
+
+    <!-- Formulário de busca -->
+    <form id="form-busca" class="card-busca">
+      <div class="form-group">
+        <label for="input-cidade">Digite o nome da cidade:</label>
+        <div class="input-linha">
+          <input 
+            type="text" 
+            id="input-cidade" 
+            placeholder="Ex: Curitiba, São Paulo..." 
+            autocomplete="off"
+            required
+          >
+          <button type="submit" id="btn-buscar">Buscar Clima</button>
+        </div>
+      </div>
+    </form>
+
+    <!-- [A11Y] Painel de resultados (inicia oculto via CSS) -->
+    <section 
+      id="card-clima" 
+      class="card-clima oculta" 
+      tabindex="-1" 
+      aria-label="Resultados da busca de clima"
+    >
+      <!-- Conteúdo inserido dinamicamente pelo JavaScript -->
+    </section>
+  </main>
+
+  <script src="clima.js"></script>
+</body>
+</html>
